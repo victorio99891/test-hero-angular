@@ -1,0 +1,18 @@
+.box-row {
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    text-align: center;
+}
+
+.innerBox {
+    width: 50%;
+    margin: 20px;
+}
+
+.box-column{
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    text-align: center;
+}

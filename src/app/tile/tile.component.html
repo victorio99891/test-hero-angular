@@ -1,0 +1,11 @@
+<div class="box" [class.done]="task.done" [class.todo]="!task.done">
+  <span style="padding: 10px 5px">{{ task.id }}</span>
+  <span style="padding: 10px 5px">{{ task.text }}</span>
+  <button *ngIf="!task.done" (click)="doTask(task)" class="myButton">
+    Do!
+  </button>
+  <button *ngIf="task.done" (click)="undoTask(task)" class="myButton">
+    Undo!
+  </button>
+  <button (click)="deleteTask(task)" class="myButtonDelete">Delete</button>
+</div>

@@ -1,0 +1,6 @@
+<div *ngIf="taskList">
+    <div *ngFor="let task of taskList">
+      <app-tile [task]="task"></app-tile>
+    </div>
+  </div>
+  
