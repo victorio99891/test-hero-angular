@@ -31,5 +31,6 @@ export class TileComponent implements OnInit {
 
   deleteTask(task: Task) {
     console.log(task);
+    this.taskService.deleteTaskFromArray(task);
   }
 }

@@ -11,7 +11,7 @@
   <div class="centerBox">
     <div>ADD NEW TASK:</div>
     <div>
-      <input type="text" [(ngModel)]="taskText"/>
+      <input type="text" [(ngModel)]="taskText" (keydown.enter)="onKeydown($event)"/>
       <button (click)="addNewTask()">Add!</button>
     </div>
   </div>

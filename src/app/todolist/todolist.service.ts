@@ -12,11 +12,15 @@ export class TodolistService {
   constructor() {}
 
   addNewTask(newTask: Task) {
-    let tmpList: Task[] = this.todoList.concat(this.doneList);
-    tmpList.sort((a, b) => (a.id > b.id ? 1 : -1));
-    let lastIndex = tmpList[tmpList.length - 1].id;
-    lastIndex++;
-    newTask.id = lastIndex;
+    const tmpList: Task[] = this.todoList.concat(this.doneList);
+    if (tmpList.length > 0) {
+      tmpList.sort((a, b) => (a.id > b.id ? 1 : -1));
+      let lastIndex = tmpList[tmpList.length - 1].id;
+      lastIndex++;
+      newTask.id = lastIndex;
+    } else {
+      newTask.id = 1;
+    }
     this.todoList.push(newTask);
   }
 
@@ -31,16 +35,15 @@ export class TodolistService {
   }
 
   deleteTaskFromArray(task: Task) {
-    if (task.done) {
-      const index = this.todoList.indexOf(task, 0);
-      if (index > -1) {
-        this.todoList.splice(index, 1);
-      }
-    } else {
-      const index = this.doneList.indexOf(task, 0);
-      if (index > -1) {
-        this.doneList.splice(index, 1);
-      }
+    let index = this.todoList.findIndex(item => item.id === task.id);
+    if (index > -1) {
+      this.todoList.splice(index, 1);
+    }
+    index = this.doneList.findIndex(
+      item => item.id === task.id && item.text === task.text
+    );
+    if (index > -1) {
+      this.doneList.splice(index, 1);
     }
   }
 }

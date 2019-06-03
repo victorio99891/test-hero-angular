@@ -23,4 +23,8 @@ export class TodolistComponent implements OnInit {
     this.taskService.addNewTask(newTask);
     this.taskText = '';
   }
+
+  onKeydown() {
+    this.addNewTask();
+  }
 }
